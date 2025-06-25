@@ -1,7 +1,7 @@
 module Utils where
-  
+
 import Codec.Picture
-import Constants
+import Constants (cellSize, imageSize, colorFor)
 
 -- ! A dead cell with exactly three living neighbors becomes alive.
 -- ! A living cell with two or three living neighbors remains alive; otherwise, it dies.

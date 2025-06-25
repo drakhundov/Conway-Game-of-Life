@@ -5,7 +5,7 @@
 import Codec.Picture
 import System.Directory (createDirectoryIfMissing)
 import Utils (matrixToImage)
-import Constants
+import Constants (nIterations)
 import Patterns (blinker, toad, beacon, pulsar, pentadecathlon)
 
 main :: IO ()

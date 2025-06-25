@@ -1,7 +1,7 @@
 module Patterns where
-    
+
 import Utils (conwayStep, embed)
-import Constants
+import Constants (gridSize)
 
 -- ! Pattern 'seeds'.
 -- `embed` will center them in the grid.
