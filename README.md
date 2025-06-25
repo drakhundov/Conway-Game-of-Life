@@ -23,5 +23,6 @@ cabal install JuicyPixels
 Assuming you have [GHC](https://www.haskell.org/ghc/) installed:
 
 ```bash
-ghc Main.hs
-./Main
+cabal build
+cabal run
+```
