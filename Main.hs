@@ -30,6 +30,6 @@ main = do
               savePngImage fileName (ImageRGB8 image)
               putStrLn $ "Saved: " ++ fileName
           )
-          [0..2]
+          [0..nIterations]
     )
     patternFuncs
