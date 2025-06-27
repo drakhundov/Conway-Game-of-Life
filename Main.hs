@@ -6,19 +6,19 @@ import Codec.Picture
 import System.Directory (createDirectoryIfMissing)
 import Utils (matrixToImage)
 import Constants (nIterations)
-import Patterns (blinker, toad, beacon, pulsar, pentadecathlon)
+import Patterns (Pattern(..), blinkerPattern, toadPattern, beaconPattern, pulsarPattern, pentadecathlonPattern)
 
 main :: IO ()
 main = do
-  let patternFuncs = zip [1..]
-        [ blinker
-        , toad
-        , beacon
-        , pulsar
-        , pentadecathlon
+  let patterns = zip [1..]
+        [ blinkerPattern
+        , toadPattern
+        , beaconPattern
+        , pulsarPattern
+        , pentadecathlonPattern
         ]
   mapM_
-    (\(i, patFn) -> do
+    (\(i, Pattern { patternFunc = patFn, fullCycleIterations = n }) -> do
         let dirName = "frames" ++ show i
         createDirectoryIfMissing True dirName
         putStrLn $ "Folder Created: " ++ dirName
@@ -30,6 +30,6 @@ main = do
               savePngImage fileName (ImageRGB8 image)
               putStrLn $ "Saved: " ++ fileName
           )
-          [0..nIterations]
+          [0..n]
     )
-    patternFuncs
+    patterns
