@@ -13,9 +13,6 @@ cellSize = 10
 imageSize :: Int
 imageSize = gridSize * cellSize
 
-nIterations :: Int
-nIterations = 10
-
 colorFor :: Int -> PixelRGB8
 colorFor 0 = PixelRGB8 255 255 255  -- white
 colorFor 1 = PixelRGB8 0 0 255      -- blue
