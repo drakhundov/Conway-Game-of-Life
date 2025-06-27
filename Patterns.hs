@@ -3,6 +3,11 @@ module Patterns where
 import Utils (conwayStep, embed)
 import Constants (gridSize)
 
+data Pattern = Pattern
+  { patternFunc :: Int -> [[Int]]  -- The pattern function
+  , fullCycleIterations :: Int    -- Number of iterations for a full cycle
+  }
+
 -- ! Pattern 'seeds'.
 -- `embed` will center them in the grid.
 blinkerOrig :: [[Int]]
@@ -46,17 +51,32 @@ pentadecathlonOrig =
   ]
 
 -- ! Patterns.
-blinker :: Int -> [[Int]]
-blinker j = iterate conwayStep (embed blinkerOrig gridSize) !! j
+blinkerPattern :: Pattern
+blinkerPattern = Pattern
+  { patternFunc = \iterno -> iterate conwayStep (embed blinkerOrig gridSize) !! iterno
+  , fullCycleIterations = 2
+  }
 
-toad :: Int -> [[Int]]
-toad j = iterate conwayStep (embed toadOrig gridSize) !! j
+toadPattern :: Pattern
+toadPattern = Pattern
+  { patternFunc = \iterno -> iterate conwayStep (embed toadOrig gridSize) !! iterno
+  , fullCycleIterations = 2
+  }
 
-beacon :: Int -> [[Int]]
-beacon j = iterate conwayStep (embed beaconOrig gridSize) !! j
+beaconPattern :: Pattern
+beaconPattern = Pattern
+  { patternFunc = \iterno -> iterate conwayStep (embed beaconOrig gridSize) !! iterno
+  , fullCycleIterations = 2
+  }
 
-pulsar :: Int -> [[Int]]
-pulsar j = iterate conwayStep (embed pulsarOrig gridSize) !! j
+pulsarPattern :: Pattern
+pulsarPattern = Pattern
+  { patternFunc = \iterno -> iterate conwayStep (embed pulsarOrig gridSize) !! iterno
+  , fullCycleIterations = 3
+  }
 
-pentadecathlon :: Int -> [[Int]]
-pentadecathlon j = iterate conwayStep (embed pentadecathlonOrig gridSize) !! j
+pentadecathlonPattern :: Pattern
+pentadecathlonPattern = Pattern
+  { patternFunc = \iterno -> iterate conwayStep (embed pentadecathlonOrig gridSize) !! iterno
+  , fullCycleIterations = 15
+  }
